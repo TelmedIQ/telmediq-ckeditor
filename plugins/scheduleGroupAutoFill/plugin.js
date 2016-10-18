@@ -28,7 +28,7 @@ CKEDITOR.plugins.add('scheduleGroupAutoFill', {
                         editor.insertHtml(html)
                     })
                     .fail(function(){
-                        alert("An unexpected error occurred autofilling schedule groups");
+                        alert('An unexpected error occurred autofilling schedule groups');
                     });
             }
         });

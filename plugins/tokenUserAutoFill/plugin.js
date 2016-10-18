@@ -31,9 +31,9 @@ CKEDITOR.plugins.add('tokenUserAutoFill', {
                         editor.insertHtml(html);
 
                     })
-                    .always(function(){
-                        
-                    })
+                    .fail(function(){
+                        alert('An unexpected error occurred autofilling token users');
+                    });
             }
         });
 
