@@ -1,6 +1,7 @@
 CKEDITOR.plugins.add('scheduleGroupAutoFill', {
     icons: 'calendar',
     init: function (editor) {
+        editor.addContentsCss('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
         editor.addCommand('sgAutoFill', {
             exec: function(editor){
 
