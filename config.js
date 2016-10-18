@@ -37,6 +37,6 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
 	// Custom plugins
-    // config.allowedContent = true;
+    config.allowedContent = true;
     config.extraPlugins = 'scheduleGroupAutoFill,tokenUserAutoFill';
 };
