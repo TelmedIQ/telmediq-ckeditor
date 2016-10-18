@@ -12,22 +12,27 @@ CKEDITOR.plugins.add('tokenUserAutoFill', {
                     return String.format('<li><a href="/token/{0}/">{1}</a></li>', tokenUser.username, tokenUser.display_name)
                 }
 
-                var url = '/api/v1/identities/tokens/';
+                var url = '/api/v1/identities/tokens/?page_size=100';
                 var tokenUsers = [];
 
                 $.get(url)
                     .done(function(data){
                         var results = data.results;
+                        var html = '<ul>';
                         _.forEach(results, function(tokenUser){
                             tokenUsers.push(tokenUser);
                         });
+
+                        for (var i = 0; i < tokenUsers.length; i++){
+                            html += buildLink(tokenUsers[i]);
+                        }
+
+                        html += '</ul><br/>';
+                        editor.insertHtml(html);
+
                     })
                     .always(function(){
-                        editor.insertHtml('<ul>');
-                        for (var i = 0; i < tokenUsers.length; i++){
-                            editor.insertHtml(buildLink(tokenUsers[i]));
-                        }
-                        editor.insertHtml('</ul><br/>');
+                        
                     })
             }
         });

@@ -9,21 +9,26 @@ CKEDITOR.plugins.add('scheduleGroupAutoFill', {
                 }
 
 
-                var url = '/api/v1/publicSchedules/';
+                var url = '/api/v1/publicSchedules/?page_size=100';
                 var schedules = [];
                 $.get(url)
                     .done(function(data){
                         var results = data.results;
+                        var html = '<ul>';
                         _.forEach(results, function(schedule){
                             schedules.push({name: schedule.name, uid: schedule.uid});
                         });
-                    })
-                    .always(function(){
-                        editor.insertHtml('<ul>');
+
                         for(var i = 0; i < schedules.length; i++){
-                            editor.insertHtml(buildLink(schedules[i]));
+                            html += buildLink(schedules[i]);
                         }
-                        editor.insertHtml('</ul><br/>');
+
+                        html += '</ul><br/>';
+
+                        editor.insertHtml(html)
+                    })
+                    .fail(function(){
+                        alert("An unexpected error occurred autofilling schedule groups");
                     });
             }
         });

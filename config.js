@@ -37,6 +37,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
 	// Custom plugins
+	config.fillEmptyBlocks = false;	// Prevent filler nodes in all empty blocks.
     config.allowedContent = true;
     config.extraPlugins = 'scheduleGroupAutoFill,tokenUserAutoFill';
 };
